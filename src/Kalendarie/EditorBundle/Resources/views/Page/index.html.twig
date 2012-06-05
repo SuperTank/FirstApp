@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <style type="text/css">  
+                
+                .topMenuContainer {
+                    width:100%;
+                    background-color:#cecece; 
+                    /*height:26px;*/
+                    padding-top:0.2em;
+                    margin-top:0.4em;   
+                    height:1.5em;
+                    }
+                
+                .topMenuContainer .topMenuItem {
+                    display:inline;
+                    padding:0.2em 1em;
+                    text-align:center;
+                    }
+                
+                .topMenuContainer .selected {
+                    background-color:#00539f;
+                    color:White;
+                    }
+
+                input {width:100%;}
+                textarea {width:100%;}
+
+                
+                .allowEnglish {
+                    background-color:#e5da9a;
+                    padding-left:5px;
+                    padding-right:5px;
+                    padding-top: 7px;
+                    }
+                    
+                .allowEnglish div {
+                    padding-right:3px;
+                    padding-left:3px;
+                    vertical-align: middle;
+                    padding-bottom:7px!important;
+                    }             
+                    
+                .tableDiv {
+                    display:table;                    
+                }
+                                    
+                .tableDiv .row {
+                    display: table-row;
+                  }
+                    
+                .tableDiv .row .cell {
+                    display: table-cell;
+                    padding: 7px 7px 15px 7px;
+                    }
+                    
+                .tableDiv .row .separator {
+                    border-bottom:1px solid #cccccc;                      
+                    }
+                    
+                .tableDiv .row .cell .location {
+                    background-color:#eeeeee;
+                    border:1px solid #cccccc;                    
+                    }
+                    
+                .centerAlign {
+                    text-align:center;
+                    }
+                    
+                .button {
+                    width:auto;
+                    }                                    
+        </style>        
+            
+
+    </head>
+    
+    <body>
+        <div class="topMenuContainer">
+            <div class="topMenuItem selected">
+                <!-- Active year -->
+                2012
+            </div>
+                
+            <div class="topMenuItem"></div>                
+        </div>
+                        
+        <div class="topMenuContainer">
+            <div class="topMenuItem selected">Hela året</div>
+            
+            <div class="topMenuItem">
+                    jan
+            </div>
+            
+            <div class="topMenuItem">feb</div>
+            
+            <div class="topMenuItem">mar</div>
+            
+            <div class="topMenuItem">apr</div>
+            
+            <div class="topMenuItem">maj</div>
+            
+            <div class="topMenuItem">jun</div>
+            
+            <div class="topMenuItem">jul</div>
+            
+            <div class="topMenuItem">aug</div>
+            
+            <div class="topMenuItem">sep</div>
+            
+            <div class="topMenuItem">okt</div>
+            
+            <div class="topMenuItem">nov</div>
+            
+            <div class="topMenuItem">dec</div>
+        </div>
+            
+        <div>
+            <a href="{{ path('Editor_newEvent') }}">Lägg till händelse</a>
+        </div>
+            
+        <div class="tableDiv">
+            {% for event in events %}
+                <div class="row">     
+                                        
+                    <div class="cell centerAlign separator">
+                        <b>
+                            {{ event.fromDate|date("m") }} {{ event.fromDate|date("M") }}
+                        </b>
+                            
+                        <br />
+                        
+                        {{ event.fromTime|date("H:m") }} - {{ event.toTime|date("H:m") }}
+                        
+                        <br />
+                        <br />
+                        
+                        <div class="location">
+                            <b> Plats </b>
+                            <br />
+                            {{ event.locationSv }}
+                        </div>
+                    </div>
+                    
+                    <div class="cell separator">
+                        <h3>
+                            {{ event.subjectSv }}
+                        </h3>
+                        
+                        {{ event.descriptionSv }}
+                        
+                        <br />
+                        <br />
+                        <b>Målgrupp: </b>
+                        {{ event.getTargetNamesSv()|join(', ') }}
+                        <br />
+                        {{ event.schoolNameSv }}
+                    </div>     
+                        
+                </div>
+
+            {% endfor %}
+        </div>
+            
+            
+    </body>
+</html>

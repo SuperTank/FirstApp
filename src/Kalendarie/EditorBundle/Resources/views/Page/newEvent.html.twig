@@ -1,0 +1,205 @@
+<html>
+    <head>
+        <style type="text/css">
+                input {width:100%;}
+                textarea {width:100%;}
+
+                
+                .allowEnglish {
+                    background-color:#e5da9a;
+                    padding-left:5px;
+                    padding-right:5px;
+                    padding-top: 7px;
+                    }
+                    
+                .allowEnglish div {
+                    padding-right:3px;
+                    padding-left:3px;
+                    vertical-align: middle;
+                    padding-bottom:7px!important;
+                    }             
+                    
+                .tableDiv {
+                    display:table;
+                    }
+                    
+                .tableDiv .row {
+                    display: table-row;
+                    }
+                    
+                .tableDiv .row .cell {
+                    display: table-cell;
+                    padding-bottom: 15px;
+                    }
+                    
+                .button {
+                    width:auto;
+                    }                                    
+        </style>
+        
+        <script language="javascript" type="text/javascript">
+                window.onload=function () { }
+        </script>            
+  
+    </head>
+    
+    <body> 
+        <h2>Ny händelse</h2>        
+        
+        <form action="{{ path('Editor_newEvent') }}" method="post" {{ form_enctype(form) }}>
+            
+            {{ form_label(form.subjectSv, 'Rubrik (på svenska)') }}
+            {{ form_widget(form.subjectSv) }}
+            <br />
+            <br />
+            {{ form_label(form.descriptionSv, 'Beskrivning (på engelska)') }}
+            {{ form_widget(form.descriptionSv) }}    
+            <br />
+            <br />            
+            {{ form_label(form.subjectEn, 'Rubrik (på engelska)') }}
+            {{ form_widget(form.subjectEn) }}     
+            <br />
+            <br />            
+            {{ form_label(form.descriptionEn, 'Beskrivning (på engelska)') }}
+            {{ form_widget(form.descriptionEn) }}         
+            
+            <br />
+            <br />            
+            
+            <div class="allowEnglish tableDiv">
+                <div class="row">
+                    <div class="cell" >
+                         <img src="{{ asset('gfx/exclamation.png') }}" alt="Viktigt!" />
+                    </div>
+                
+                    <div class="cell" style="width:10%;">
+                        Lämpar sig för engelsktalande
+                    </div>
+                    
+                    <div class="cell" >
+                        {{ form_widget(form.useEnglish) }}
+                    </div>
+                    
+                    <div class="cell" >
+                        OBS! Om du väler "Ja" måste du även fylla i en rubrik och beskrivning på engelska.
+                    </div>
+                </div>
+            </div>
+            
+            <br />       
+            
+            <div class="tableDiv">
+                
+                <div class="row">
+                    <div class="cell">       
+                        {{ form_label(form.fromDate, 'Startdatum') }}            
+                        {{ form_widget(form.fromDate) }} 
+                    </div>
+                        
+                    <div class="cell">
+                        {{ form_label(form.toDate, 'Slutdatum') }}            
+                        {{ form_widget(form.toDate) }}                        
+                    </div>
+                </div>                
+                
+                    
+                <div class="row">
+                    <div class="cell">
+                        {{ form_label(form.fromTime, 'Starttid') }}            
+                        {{ form_widget(form.fromTime) }}
+                    </div>
+                        
+                    <div class="cell">
+                        {{ form_label(form.toTime, 'Sluttid') }}            
+                        {{ form_widget(form.toTime) }}                        
+                    </div>
+                </div>
+                    
+                <div class="row">
+                    <div class="cell">
+                        {{ form_label(form.locationSv, 'Plats/Lokal') }}            
+                    </div>
+                        
+                    <div class="cell">       
+                        {{ form_widget(form.locationSv) }}                        
+                    </div>
+                </div>
+                    
+                <div class="row">
+                    <div class="cell">
+                        {{ form_label(form.locationEn, 'Plats/Lokal (på engelska)') }}            
+                    </div>
+                        
+                    <div class="cell">       
+                        {{ form_widget(form.locationEn) }}                        
+                    </div>
+                </div>    
+                    
+                <div class="row">
+                    <div class="cell">
+                        {{ form_label(form.schoolId, 'Fackhögskola') }}  
+                    </div>
+                        
+                    <div class="cell">       
+                        {{ form_widget(form.schoolId) }}                     
+                    </div>                       
+                </div>
+                    
+                <div class="row">
+                    <div class="cell">
+                        Målgrupp
+                    </div>
+                        
+                    <div class="cell">    
+                        <div class="tableDiv">
+                            <div class="row">
+                                <div class="cell">
+                                    {{ form_label(form.targetPublic) }} 
+                                    
+                                </div>
+                                 
+                                <div class="cell">    
+                                    {{ form_widget(form.targetPublic) }} 
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                <div class="cell">
+                                    {{ form_label(form.targetStudents) }} 
+                                </div>
+                                    
+                                <div class="cell">
+                                    {{ form_widget(form.targetStudents) }} 
+                                </div>                                    
+                            </div>
+                                
+                            <div class="row">
+                                <div class="cell">
+                                    {{ form_label(form.targetExternalStaff) }}   
+                                </div>
+                                    
+                                <div class="cell">
+                                    {{ form_widget(form.targetExternalStaff) }} 
+                                </div>                                    
+                            </div>
+                                
+                            <div class="row">
+                                <div class="cell">
+                                    {{ form_label(form.targetInternalStaff) }}  
+                                </div>
+                                    
+                                <div class="cell">
+                                    {{ form_widget(form.targetInternalStaff) }} 
+                                </div>                                    
+                            </div>                                
+                        </div>                        
+                                                     
+                    </div>                       
+                </div>                    
+            </div>
+                    
+            <input type="submit" value="Spara" class="button" />
+        </form>     
+            
+    </body>
+</html>
